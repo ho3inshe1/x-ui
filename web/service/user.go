@@ -2,7 +2,9 @@ package service
 
 import (
 	"errors"
-
+	
+	"crypto/rand"
+    "encoding/hex"
 	"x-ui/database"
 	"x-ui/database/model"
 	"x-ui/logger"
