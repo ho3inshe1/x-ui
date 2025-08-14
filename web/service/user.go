@@ -11,7 +11,15 @@ import (
 
 	"gorm.io/gorm"
 )
-
+func generateToken() string {
+    b := make([]byte, 16)
+    rand.Read(b)
+    return hex.EncodeToString(b)
+}
+func (s *UserService) AddUser(user *model.User) error {
+    user.Token = generateToken() // افزودن این خط
+    return s.db.Create(user).Error
+}
 type UserService struct{}
 
 func (s *UserService) GetFirstUser() (*model.User, error) {
